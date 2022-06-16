@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "125309301868",
+    "project_id": "bookflutter-d7827",
+    "storage_bucket": "bookflutter-d7827.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:125309301868:android:02132e0c6813cfcb175449",
+        "android_client_info": {
+          "package_name": "com.example.bookflutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "125309301868-rv9gkqbkhf4te9adviv2m6di6r7s452u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkXjaD_jftuV8aAgpzVFEC8NYwErpfrr4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "125309301868-rv9gkqbkhf4te9adviv2m6di6r7s452u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
