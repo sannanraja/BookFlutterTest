@@ -1,3 +1,5 @@
+
+
 import 'package:bookflutter/models/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -5,10 +7,11 @@ import '../models/data.dart';
 import 'package:flutter/material.dart';
 
 class SecondRoute extends StatefulWidget {
+  const SecondRoute({Key? key}) : super(key: key);
+
   @override
   State<SecondRoute> createState() => _SecondRouteState();
 }
-
 class _SecondRouteState extends State<SecondRoute> {
   List userProfilesList = [];
   final textControllerone = TextEditingController();
@@ -26,6 +29,7 @@ class _SecondRouteState extends State<SecondRoute> {
   Widget build(BuildContext context) {
     //app bar
     CollectionReference<Object?> bookscollection = getfirebaseCollection();
+
 
     ///create book tile hero
     createTile(Book book) => Material(
@@ -47,7 +51,7 @@ class _SecondRouteState extends State<SecondRoute> {
       primary: false,
       slivers: <Widget>[
         SliverPadding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           sliver: SliverGrid.count(
             childAspectRatio: 2 / 3,
             crossAxisCount: 3,
@@ -66,7 +70,7 @@ class _SecondRouteState extends State<SecondRoute> {
           elevation: 0.0,
         ),
         floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.save),
+          child: const Icon(Icons.save),
           onPressed: () {
             // bookscollection.add({
             //   'name': textController.text
@@ -92,8 +96,8 @@ class _SecondRouteState extends State<SecondRoute> {
               color: Colors.orange,
               child: TextField(
                 controller: textControllerone,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                decoration: const InputDecoration(
+                  border: const OutlineInputBorder(),
                   hintText: 'Enter a name term',
                 ),
               ),
@@ -102,8 +106,8 @@ class _SecondRouteState extends State<SecondRoute> {
               color: Colors.blue,
               child: TextField(
                 controller: textControllertwo,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                decoration: const InputDecoration(
+                  border: const OutlineInputBorder(),
                   hintText: 'Enter a title term',
                 ),
               ),
@@ -112,7 +116,7 @@ class _SecondRouteState extends State<SecondRoute> {
               color: Colors.white,
               child: TextField(
                 controller: textControllerthree,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'Enter a address term',
                 ),
@@ -122,8 +126,8 @@ class _SecondRouteState extends State<SecondRoute> {
               color: Colors.teal,
               child: TextField(
                 controller: textControllerfour,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                decoration: const InputDecoration(
+                  border: const OutlineInputBorder(),
                   hintText: 'Enter a price term',
                 ),
               ),
@@ -132,7 +136,7 @@ class _SecondRouteState extends State<SecondRoute> {
               color: Colors.amber,
               child: TextField(
                 controller: textControllerfive,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'Enter a description term',
                 ),
@@ -140,12 +144,12 @@ class _SecondRouteState extends State<SecondRoute> {
             ),
             Expanded(
               child: Container(
+
                 color: Colors.purple,
                 child: SingleChildScrollView(
                   child: StreamBuilder(
                       stream: bookscollection.orderBy('name').snapshots(),
-                      builder:
-                          (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                      builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                         return ListView(
                           children: snapshot.data!.docs.map((books) {
                             return Column(
@@ -153,6 +157,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                 Center(
                                   child: ListTile(
                                     title: Text(books['name']),
+
                                     onLongPress: () {
                                       books.reference.delete();
                                     },
@@ -204,12 +209,17 @@ class _SecondRouteState extends State<SecondRoute> {
     await docuser.set(json);
   }
 
+
+
+
+
   Future getUsersList() async {
     List itemsList = [];
     final CollectionReference booksList =
-        FirebaseFirestore.instance.collection('books');
+    FirebaseFirestore.instance.collection('books');
 
     try {
+
       await booksList.get().then((querySnapshot) {
         querySnapshot.docs.forEach((element) {
           itemsList.add(element.data);
@@ -220,7 +230,9 @@ class _SecondRouteState extends State<SecondRoute> {
       print(e.toString());
       return null;
     }
+
   }
+
 
   @override
   void initState() {
@@ -228,6 +240,8 @@ class _SecondRouteState extends State<SecondRoute> {
 
     fetchDatabaseList();
   }
+
+
 
   fetchDatabaseList() async {
     dynamic resultant = getUsersList();
